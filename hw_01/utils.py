@@ -19,7 +19,7 @@ def generate_users(number) -> str:
     list_of_users = []
     for i in range(number):
         list_of_users.append(f'name: {faker.name()}, email: {faker.email()}')
-    return str(list_of_users)
+    return list_of_users
 
 
 def get_number_of_astros() -> str:

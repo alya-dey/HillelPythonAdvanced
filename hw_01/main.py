@@ -12,8 +12,9 @@ def requirements():
 
 @app.route('/generate-users/')
 def users():
+    # <br>
     users_list = generate_users(100)
-    return users_list
+    return str(users_list)
 
 
 @app.route('/space/')
