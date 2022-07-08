@@ -6,12 +6,15 @@ app = Flask(__name__)
 
 @app.route('/phones/create/')
 def phones_create():
+    name = request.args['name']
+    phone = request.args['phone']
+
     try:
         conn = sqlite3.connect('phones.db')
         cur = conn.cursor()
         sql = f'''
         INSERT INTO phones
-        VALUES ('Viktor', '0504513281');
+        VALUES ('{name}', '{phone}');
         '''
         cur.execute(sql)
         conn.commit()
@@ -40,11 +43,13 @@ def phones_read():
 
 @app.route('/phones/delete/')
 def phones_delete():
+    phone = request.args['phone']
+
     try:
         conn = sqlite3.connect('phones.db')
         cur = conn.cursor()
         sql = f'''
-        DELETE FROM phones WHERE phone == '0934513285';
+        DELETE FROM phones WHERE phone == '{phone}';
         '''
         cur.execute(sql)
         conn.commit()
